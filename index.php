@@ -374,7 +374,6 @@
               <span class="material-icons-outlined">category</span>
             </div>
             <h1 id="itemSupplyCountContainer">
-				<?php require './model/dashboard/getItemStockCount.php'; ?>
 			</h1>
           </div>
 
