@@ -67,13 +67,58 @@ function updateItemStockCount() {
     })
 }
 
+function updateOverallProductSoldCount() {
+    $.ajax({
+        url: 'model/dashboard/getItemOverallSoldCount.php',
+        method: 'GET',
+        dataType: 'text',
+        success: function(response) {
+            try {
+                const jsonResponse = JSON.parse(response);
+                if (jsonResponse.success) {
+                    const soldCount = jsonResponse.itemOverallSoldCount || '0';
+                    $('#soldTotalProductsContainer').text(soldCount);
+                } else {
+                    console.error(`Error fetching JSON data: ${jsonResponse.error}`);
+                }
+            } catch (error) {
+                console.error(`Error parsing JSON response: ${error}`);
+            }
+        }
+    })
+}
+
+// soldWeeklyProductsContainer
+function updateWeeklyProductSoldCount() {
+    $.ajax({
+        url: 'model/dashboard/getItemWeeklySoldCount.php',
+        method: 'GET',
+        dataType: 'text',
+        success: function(response) {
+            try {
+                const jsonResponse = JSON.parse(response);
+                if (jsonResponse.success) {
+                    $('#soldWeeklyProductsContainer').text(jsonResponse.itemWeeklySoldCount) || $('#soldWeeklyProductsContainer').text('0');
+                } else {
+                    console.error(`Error fetching JSON data: ${jsonResponse.error}`);
+                }
+            } catch (error) {
+                console.error(`Error parsing JSON response: ${error}`);
+            }
+        }
+    })
+}
+
 // Call the intial functions for dashboard refresh
 updateItemCount();
 updateActiveVendors();
 updateItemStockCount();
+updateWeeklyProductSoldCount();
 
 setInterval(() => {
-    updateItemCount,
-    updateActiveVendors,
-    updateItemStockCount
+    updateItemCount(),
+    updateActiveVendors(),
+    updateItemStockCount(),
+    updateOverallProductSoldCount(),
+    updateWeeklyProductSoldCount()
 }, 10000);

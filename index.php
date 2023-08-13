@@ -391,7 +391,6 @@
 				<span class="material-icons-outlined">shopping_bag</span>
 			</div>
 			<h1 id="soldTotalProductsContainer">
-				<?php require './model/dashboard/getItemOverallSoldCount.php'; ?>
 			</h1>
 		  </div>
 		  <div class="card">
@@ -400,7 +399,6 @@
 				<span class="material-icons-outlined">shopping_bag</span>
 			</div>
 			<h1 id="soldWeeklyProductsContainer">
-				<?php require './model/dashboard/getItemWeeklySoldCount.php'; ?>
 			</h1>
 		  </div>
           <div class="card">
