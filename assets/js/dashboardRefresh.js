@@ -9,14 +9,14 @@ function updateItemCount() {
                 if (jsonResponse.success) {
                     $('#itemCountContainer').text(jsonResponse.itemCount);
                 } else {
-                    console.error('Error fetching item count:', jsonResponse.error);
+                    console.error('Error fetching JSON data:', jsonResponse.error);
                 }
             } catch (error) {
                 console.error('Error parsing JSON response:', error);
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            console.error('Error fetching item count:', textStatus, errorThrown);
+            console.error('Error fetching JSON data:', textStatus, errorThrown);
         }
     });
 }
@@ -32,21 +32,48 @@ function updateActiveVendors() {
                 if (jsonResponse.success) {
                     $('#activeVendorCountContainer').text(jsonResponse.activeVendors);
                 } else {
-                    console.error('Error fetching item count:', jsonResponse.error);
+                    console.error('Error fetching JSON data:', jsonResponse.error);
                 }
             } catch (error) {
                 console.error('Error parsing JSON response:', error);
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            console.error('Error fetching item count:', textStatus, errorThrown);
+            console.error('Error fetching JSON data:', textStatus, errorThrown);
         }
     });
+}
+
+function updateItemStockCount() {
+    $.ajax({
+        url: 'model/dashboard/getItemStockCount.php',
+        method: 'GET',
+        dataType: 'text',
+        success: function(response) {
+            try {
+                const jsonResponse = JSON.parse(response);
+                if (jsonResponse.success) {
+                    $('#itemSupplyCountContainer').text(jsonResponse.itemStockCount);
+                } else {
+                    console.error(`Error fetching JSON data: ${jsonResponse.error}`);
+                }
+            } catch (error) {
+                console.error(`Error parsing JSON response: ${error}`);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error('Error fetching JSON data:', textStatus, errorThrown);
+        }
+    })
 }
 
 // Call the intial functions for dashboard refresh
 updateItemCount();
 updateActiveVendors();
+updateItemStockCount();
 
-setInterval(updateItemCount, 10000); // 10000 milliseconds = 10 seconds
-setInterval(updateActiveVendors, 10000);
+setInterval(() => {
+    updateItemCount,
+    updateActiveVendors,
+    updateItemStockCount
+}, 10000);
