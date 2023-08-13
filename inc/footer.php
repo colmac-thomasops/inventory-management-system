@@ -4,10 +4,6 @@
         <p class="m-0 text-center text-white"> Izakaya Shonantei &copy; Inventory System  <?php echo date('Y'); ?></p>
       </div>
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	
 	<!-- Datatables script -->
 	<script type="text/javascript" charset="utf8" src="vendor/DataTables/datatables.js"></script>
@@ -26,4 +22,3 @@
 	<!-- Custom scripts -->
 	<script src="assets/js/scripts.js"></script>
 	<script src="assets/js/login.js"></script>
-	<script src="assets/js/dashboardRefresh.js"></script>
