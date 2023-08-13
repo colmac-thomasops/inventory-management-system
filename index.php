@@ -365,7 +365,6 @@
               <span class="material-icons-outlined">inventory_2</span>
             </div>
 			<h1 id="itemCountContainer">
-				<?php require './model/dashboard/getItemType.php'; ?>
   			</h1>
           </div>
           <div class="card">
