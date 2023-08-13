@@ -14,6 +14,7 @@
 <?php
 	require 'inc/navigation.php';
 ?>
+	<script src="assets/js/dashboardRefresh.js"></script>
     <!-- Page Content -->
     <div class="container-fluid">
 	  <div class="row">
@@ -383,7 +384,6 @@
 				<span class="material-icons-outlined">person</span>
 			</div>
 			<h1 id="activeVendorCountContainer">
-				<?php require './model/dashboard/getActiveVendors.php'; ?>
 			</h1>
 		  </div>
 		  <div class="card">
