@@ -16,7 +16,7 @@ $(document).ready(function(){
 	});
 
 	// Listen for keypress event on username and password input fields
-	$('#loginUsername, $loginPassword').on('keypress', function(event) {
+	$('#loginUsername, #loginPassword').on('keypress', function(event) {
 		if (event.which === 13) {
 			login();
 		}
