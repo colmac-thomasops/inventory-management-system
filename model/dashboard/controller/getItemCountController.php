@@ -89,11 +89,15 @@
             return json_encode($response);
         }
 
-        public function getCurrentYearMonthlyProductSoldCount() {
+        public function getCurrentYearMonthlyProductSoldCount(int $year = null) {
             try {
+                if (is_null($year)) {
+                    $year = date("Y");
+                }
                 $itemCountModel = new ItemCountModel();
-                $perMonthCurrYrSoldCount = $itemCountModel->getCurrentYearProductSoldCount();
+                $perMonthCurrYrSoldCount = $itemCountModel->getCurrentYearProductSoldCount($year);
                 $response["success"] = true;
+                $response["year"] = $year;
                 $response["perMonthSoldCount"] = $perMonthCurrYrSoldCount;
                 $this->logger->info("Process successful.".PHP_EOL."Response: ".PHP_EOL.json_encode($response));
             } catch (Exception $e) {
