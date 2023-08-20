@@ -41,5 +41,5 @@
 	define('DB_SCHEMA', $_ENV['DB_SCHEMA']);
 
 	// Max database re-connection tries before existing or timing out
-	define('DB_MAX_CONN_ATTEMPTS', 10);
+	define('DB_MAX_CONN_ATTEMPTS', 2);
 ?>
