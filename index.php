@@ -14,6 +14,7 @@
 <?php
 	require 'inc/navigation.php';
 ?>
+	<script src="assets/js/dashboardRefresh.js"></script>
     <!-- Page Content -->
     <div class="container-fluid">
 	  <div class="row">
@@ -365,7 +366,6 @@
               <span class="material-icons-outlined">inventory_2</span>
             </div>
 			<h1 id="itemCountContainer">
-				<?php require './model/dashboard/getItemType.php'; ?>
   			</h1>
           </div>
           <div class="card">
@@ -374,7 +374,6 @@
               <span class="material-icons-outlined">category</span>
             </div>
             <h1 id="itemSupplyCountContainer">
-				<?php require './model/dashboard/getItemStockCount.php'; ?>
 			</h1>
           </div>
 
@@ -384,7 +383,6 @@
 				<span class="material-icons-outlined">person</span>
 			</div>
 			<h1 id="activeVendorCountContainer">
-				<?php require './model/dashboard/getActiveVendors.php'; ?>
 			</h1>
 		  </div>
 		  <div class="card">
@@ -393,7 +391,6 @@
 				<span class="material-icons-outlined">shopping_bag</span>
 			</div>
 			<h1 id="soldTotalProductsContainer">
-				<?php require './model/dashboard/getItemOverallSoldCount.php'; ?>
 			</h1>
 		  </div>
 		  <div class="card">
@@ -402,7 +399,6 @@
 				<span class="material-icons-outlined">shopping_bag</span>
 			</div>
 			<h1 id="soldWeeklyProductsContainer">
-				<?php require './model/dashboard/getItemWeeklySoldCount.php'; ?>
 			</h1>
 		  </div>
           <div class="card">
