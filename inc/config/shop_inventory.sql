@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `city` varchar(30) DEFAULT NULL,
   `district` varchar(30) NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'Active',
-  `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -152,8 +152,8 @@ CREATE TABLE `sale` (
 --
 
 INSERT INTO `sale` (`saleID`, `itemNumber`, `customerID`, `customerName`, `itemName`, `saleDate`, `discount`, `quantity`, `unitPrice`) VALUES
-(1, '3', 4, 'Tatsuro Yamashita', 'Agedashi Tofu', '2020-05-24', 5, 2, 1300),
-(2, '1', 39, 'Amal Silverton', 'Agedashi Tofu', '2020-05-24', 0, 111, 1500),
+(1, '3', 4, 'Tatsuro Yamashita', 'Agedashi Tofu', '2023-05-24', 5, 2, 1300),
+(2, '1', 39, 'Amal Silverton', 'Agedashi Tofu', '2023-05-24', 0, 111, 1500),
 (3, '4', 18, 'Asitha Silva', 'Buta Kashira', '2020-05-24', 2, 1, 3409),
 (4, '5', 25, 'Theresa May', 'Saba Shioyaki', '2022-05-24', 2, 1, 1200),
 (5, '6', 24, 'Sunil Perera', 'Torimomo', '2023-05-24', 0, 1, 3000),
@@ -162,7 +162,7 @@ INSERT INTO `sale` (`saleID`, `itemNumber`, `customerID`, `customerName`, `itemN
 (8, '8', 4, 'Aimi Fukada', 'Tori Teriyaki', '2019-05-14', 2.1, 1, 2300),
 (9, '6', 26, 'Sachin Tendulkar', 'Torikaraage', '2019-05-14', 0, 1, 3000),
 (10, '5', 25, 'Theresa May', 'Omurice', '2019-05-14', 2, 9, 1200),
-(11, '10', 26, 'Sachin Tendulkar', 'Katsu-Curry', '2019-04-05', 1, 7, 1000);
+(11, '10', 26, 'Sachin Tendulkar', 'Katsu-Curry', '2023-04-05', 1, 7, 1000);
 
 -- --------------------------------------------------------
 
