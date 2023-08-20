@@ -79,14 +79,32 @@
                 $response["itemWeeklySoldCount"] = $weeklyProductSoldCount;
                 $this->logger->info("Process successful.\n Response: " . json_encode($response));
             } catch (Exception $e) {
-                $errorCode = $e->getCoode();
+                $errorCode = $e->getCode();
                 $errorMessage = $e->getMessage();
                 $stackTrace = $e->getTraceAsString();
-                $this->logger->error("ERROR (Code: $errorCode): $errorMessage\n$stackTrace");
+                $this->logger->error("ERROR (Code: $errorCode): $errorMessage".PHP_EOL."$stackTrace");
                 $response["success"] = false;
                 $response["error"] = "An error occurred. Please check the logs for more information.";
             }
             return json_encode($response);
+        }
+
+        public function getCurrentYearMonthlyProductSoldCount() {
+            try {
+                $itemCountModel = new ItemCountModel();
+                $perMonthCurrYrSoldCount = $itemCountModel->getCurrentYearProductSoldCount();
+                $response["success"] = true;
+                $response["perMonthSoldCount"] = $perMonthCurrYrSoldCount;
+                $this->logger->info("Process successful.".PHP_EOL."Response: ".PHP_EOL.json_encode($response));
+            } catch (Exception $e) {
+                $errorCode = $e->getCode();
+                $errorMessage = $e->getMessage();
+                $stackTrace = $e->getTraceAsString();
+                $this->logger->error("ERROR (Code: $errorCode): $errorMessage".PHP_EOL."$stackTrace");
+                $response["success"] = false;
+                $response["error"] = "An error occurred. Please check the logs for more information.";
+            }
+            return json_encode($response, JSON_PRETTY_PRINT);
         }
     }
 ?>

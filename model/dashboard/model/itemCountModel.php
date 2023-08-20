@@ -37,10 +37,10 @@
 
         /**
          * Get the overall count of products sold.
-         * @return int Number of items sold from start of purchase until latest.
+         * @return int Number of items sold from from sales table from the start to the latest sold date.
          */
         public function getOverallProductSoldCount() {
-            $query = "SELECT SUM(quantity) as item_sold_count FROM purchase";
+            $query = "SELECT SUM(quantity) as item_sold_count FROM sale";
             $sqlStatement = $this->conn->prepare($query);
             $sqlStatement->execute();
 
@@ -57,7 +57,7 @@
          * @return int Number of items sold within this week.
          */
         public function getCurrentWeekProductSoldCount() {
-            $query = "SELECT SUM(quantity) as weekly_sold_count FROM purchase WHERE YEARWEEK(purchaseDate) = YEARWEEK(NOW())";
+            $query = "SELECT SUM(quantity) as weekly_sold_count FROM sale WHERE YEARWEEK(saleDate) = YEARWEEK(NOW())";
             $sqlStatement = $this->conn->prepare($query);
             $sqlStatement->execute();
 
@@ -66,6 +66,34 @@
                 return $result['weekly_sold_count'];
             } else {
                 return 0;
+            }
+        }
+
+        public function getCurrentYearProductSoldCount() {
+            $query = <<<QUERY
+            SELECT
+            YEAR(saleDate) AS year,
+            MONTH(saleDate) AS month,
+            SUM(quantity) AS items_sold
+            FROM
+                sale
+            WHERE
+                YEAR(saleDate) = YEAR(CURRENT_DATE)
+            GROUP BY
+                YEAR(saleDate),
+                MONTH(saleDate)
+            ORDER BY
+                YEAR(saleDate),
+                MONTH(saleDate);
+            QUERY;
+            $sqlStatement = $this->conn->prepare($query);
+            $sqlStatement->execute();
+
+            $result = $sqlStatement->fetchAll(PDO::FETCH_ASSOC);
+            if (is_array($result)) {
+                return $result;
+            } else {
+                return [];
             }
         }
     }
