@@ -69,16 +69,15 @@
             }
         }
 
-        public function getCurrentYearProductSoldCount() {
+        public function getCurrentYearProductSoldCount(int $year) {
             $query = <<<QUERY
             SELECT
-            YEAR(saleDate) AS year,
             MONTH(saleDate) AS month,
-            SUM(quantity) AS items_sold
+            SUM(quantity) AS itemsSold
             FROM
                 sale
             WHERE
-                YEAR(saleDate) = YEAR(CURRENT_DATE)
+                YEAR(saleDate) = :year
             GROUP BY
                 YEAR(saleDate),
                 MONTH(saleDate)
@@ -87,6 +86,7 @@
                 MONTH(saleDate);
             QUERY;
             $sqlStatement = $this->conn->prepare($query);
+            $sqlStatement->bindParam(':year', $year, PDO::PARAM_INT);
             $sqlStatement->execute();
 
             $result = $sqlStatement->fetchAll(PDO::FETCH_ASSOC);
