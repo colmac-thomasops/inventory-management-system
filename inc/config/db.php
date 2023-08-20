@@ -18,11 +18,13 @@
 	$connAttempts = 0;
 
 	// Connect to database
+	$conn = null;
+	$dsn = "mysql:host=" . DB_HOSTNAME . ";port=" . DB_PORT . ";dbname=" . DB_SCHEMA;
 	$logger->info("Connecting to database host: " . DB_HOSTNAME . "\n");
 
 	while ($connAttempts < $maxAttempts) {
 		try{
-			$dsn = "mysql:host=" . DB_HOSTNAME . ";port=" . DB_PORT . ";dbname=" . DB_SCHEMA;
+			
 			$conn = new PDO($dsn, DB_USERNAME, DB_PASSWORD);
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$logger->info("Connected to database successfully\n");
@@ -37,6 +39,9 @@
 
 	if ($connAttempts >= $maxAttempts) {
 		$logger->error("Failed to connect to the database after multiple attempts. Exiting...\n");
+		if ($conn) {
+			$conn = null;
+		}
 		exit(1);
 	}
 ?>
