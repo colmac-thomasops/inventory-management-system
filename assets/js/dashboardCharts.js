@@ -1,3 +1,6 @@
+var salesOrdersChartName = 'Sales Orders';
+var purchaseOrdersChartName = 'Purchase Orders';
+
 var areaChartOptionsPurchaseNSales = {
     chart: {
         type: 'area',
@@ -6,21 +9,22 @@ var areaChartOptionsPurchaseNSales = {
         stacked: false,
         toolbar: {
             show: false
-        },
-        series: [
-            {
-                name: 'Sales Orders',
-                data: []
-            }
-        ],
-        dataLabels: {
-            enabled: false
         }
+    },
+    series: [
+        {
+            name: salesOrdersChartName,
+            data: []
+        }
+    ],
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+    dataLabels: {
+        enabled: false
     }
 }
 
 var areaChartPurchaseNSales = new ApexCharts(
-    document.querySelector(),
+    document.querySelector('#area-chart'),
     areaChartOptionsPurchaseNSales
 )
 areaChartPurchaseNSales.render();
@@ -33,7 +37,7 @@ function updateAreaChart() {
             try {
                 const jsonResponse = JSON.parse(response);
                 console.log(jsonResponse);
-                areaChartPurchaseNSales.updateSeries([{data: jsonResponse.itemsSold}]);
+                areaChartPurchaseNSales.updateSeries([{name: salesOrdersChartName, data: jsonResponse.itemsSold}], true);
 
             } catch (error) {
                 console.log(`Error fetching JSON data: ${error}`);
