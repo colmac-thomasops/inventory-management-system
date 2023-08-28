@@ -122,12 +122,12 @@ CREATE TABLE IF NOT EXISTS `purchase` (
 --
 
 INSERT INTO `purchase` (`purchaseID`, `itemNumber`, `purchaseDate`, `itemName`, `unitPrice`, `quantity`, `vendorName`, `vendorID`) VALUES
-(1, '1', '2018-05-24', 'Agedashi Tofu', 1500, 28, 'Johnson and Johnsons Co.', 3),
-(2, '2', '2018-05-18', 'Agedashi Tofu', 1500, 28, 'Louise Vitton Bag', 4),
-(3, '3', '2018-05-07', 'Tori Teriyaki', 1650, 10, 'Johnson and Johnsons Co.', 3),
-(4, '4', '2018-05-24', 'Agedashi Tofu', 1500, 28, 'Louise Vitton Bag', 4),
-(5, '6', '2018-05-16', 'Torikaraage', 2300, 9, 'ABC Company', 1),
-(6, '7', '2018-05-21', 'Omurice', 1000, 92, 'Sample Vendor 222', 2);
+(1, '1', '2023-01-24', 'Agedashi Tofu', 1500, 28, 'Johnson and Johnsons Co.', 3),
+(2, '2', '2023-01-18', 'Agedashi Tofu', 1500, 28, 'Louise Vitton Bag', 4),
+(3, '3', '2023-02-07', 'Tori Teriyaki', 1650, 10, 'Johnson and Johnsons Co.', 3),
+(4, '4', '2023-02-24', 'Agedashi Tofu', 1500, 28, 'Louise Vitton Bag', 4),
+(5, '6', '2023-03-16', 'Torikaraage', 2300, 9, 'ABC Company', 1),
+(6, '7', '2023-03-21', 'Omurice', 1000, 92, 'Sample Vendor 222', 2);
 
 -- --------------------------------------------------------
 
@@ -152,17 +152,17 @@ CREATE TABLE `sale` (
 --
 
 INSERT INTO `sale` (`saleID`, `itemNumber`, `customerID`, `customerName`, `itemName`, `saleDate`, `discount`, `quantity`, `unitPrice`) VALUES
-(1, '3', 4, 'Tatsuro Yamashita', 'Agedashi Tofu', '2023-05-24', 5, 2, 1300),
-(2, '1', 39, 'Amal Silverton', 'Agedashi Tofu', '2023-05-24', 0, 111, 1500),
-(3, '4', 18, 'Asitha Silva', 'Buta Kashira', '2020-05-24', 2, 1, 3409),
-(4, '5', 25, 'Theresa May', 'Saba Shioyaki', '2022-05-24', 2, 1, 1200),
-(5, '6', 24, 'Sunil Perera', 'Torimomo', '2023-05-24', 0, 1, 3000),
-(6, '7', 14, 'Tatsuro Yamashita', 'Torikawa', '2019-05-24', 1.5, 1, 1650),
-(7, '3', 4, 'Aimi Fukada', 'Okonomiyaki', '2019-05-24', 0, 3, 1300),
-(8, '8', 4, 'Aimi Fukada', 'Tori Teriyaki', '2019-05-14', 2.1, 1, 2300),
-(9, '6', 26, 'Sachin Tendulkar', 'Torikaraage', '2019-05-14', 0, 1, 3000),
-(10, '5', 25, 'Theresa May', 'Omurice', '2019-05-14', 2, 9, 1200),
-(11, '10', 26, 'Sachin Tendulkar', 'Katsu-Curry', '2023-04-05', 1, 7, 1000);
+(1, '3', 4, 'Tatsuro Yamashita', 'Agedashi Tofu', '2023-01-02', 5, 2, 1300),
+(2, '1', 39, 'Amal Silverton', 'Agedashi Tofu', '2023-01-09', 0, 111, 1500),
+(3, '4', 18, 'Asitha Silva', 'Buta Kashira', '2023-01-16', 2, 1, 3409),
+(4, '5', 25, 'Theresa May', 'Saba Shioyaki', '2023-01-23', 2, 1, 1200),
+(5, '6', 24, 'Sunil Perera', 'Torimomo', '2023-02-06', 0, 1, 3000),
+(6, '7', 14, 'Tatsuro Yamashita', 'Torikawa', '2023-02-13', 1.5, 1, 1650),
+(7, '3', 4, 'Aimi Fukada', 'Okonomiyaki', '2023-02-20', 0, 3, 1300),
+(8, '8', 4, 'Aimi Fukada', 'Tori Teriyaki', '2023-02-27', 2.1, 1, 2300),
+(9, '6', 26, 'Sachin Tendulkar', 'Torikaraage', '2023-03-06', 0, 1, 3000),
+(10, '5', 25, 'Theresa May', 'Omurice', '2023-03-13', 2, 9, 1200),
+(11, '10', 26, 'Sachin Tendulkar', 'Katsu-Curry', '2023-03-20', 1, 7, 1000);
 
 -- --------------------------------------------------------
 

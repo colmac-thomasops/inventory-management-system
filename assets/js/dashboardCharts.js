@@ -1,5 +1,3 @@
-const  {getMonthName} = require('./utils/utilities');
-
 var salesOrdersChartName = 'Sales Orders';
 var purchaseOrdersChartName = 'Purchase Orders';
 var monthsXAxis = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"];
@@ -25,7 +23,7 @@ var areaChartOptionsPurchaseNSales = {
         }
     ],
     xaxis: {
-        categories: monthsXAxis
+        categories: []
     },
     dataLabels: {
         enabled: false
@@ -41,6 +39,16 @@ var areaChartOptionsPurchaseNSales = {
     }
 }
 
+function getMonthName(monthNumber, locales = 'en-US') {
+    const date = new Date();
+    date.setMonth(monthNumber - 1);
+
+    return date.toLocaleDateString(locales, {
+        month: 'short',
+        timeZone: 'UTC'
+    });
+}
+
 $(document).ready(function() {
     function updateAreaChart() {
         $.ajax({
@@ -52,10 +60,18 @@ $(document).ready(function() {
                     console.log(jsonResponse);
     
                     const itemsSoldData = jsonResponse.perMonthSoldCount.map(item => item.itemsSold);
-                    const monthNames = getMonthName(jsonResponse.perMonthSoldCount.map(item => item.month));
+                    const monthNames = jsonResponse.perMonthSoldCount.map(item => {
+                        const monthName = getMonthName(item.month);
+                        return { ...item, monthName };
+                    });
+                    console.log(`Result: ${monthNames}`);
     
                     areaChartPurchaseNSales.updateSeries([{name: salesOrdersChartName, data: itemsSoldData}], true);
-                    areaChartOptionsPurchaseNSales.xaxis.categories =  monthNames;
+                    areaChartPurchaseNSales.updateOptions({
+                        xaxis: {
+                            categories: JSON.stringify(monthNames.monthName)
+                        }
+                    });
     
                 } catch (error) {
                     console.log(`Error fetching JSON data: ${error}`);

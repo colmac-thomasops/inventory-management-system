@@ -14,7 +14,6 @@
 <?php
 	require 'inc/navigation.php';
 ?>
-	<script src="assets/js/dashboardRefresh.js"></script>
     <!-- Page Content -->
     <div class="container-fluid">
 	  <div class="row">
@@ -26,9 +25,9 @@
 			  <a class="nav-link" id="v-pills-purchase-tab" data-toggle="pill" href="#v-pills-purchase" role="tab" aria-controls="v-pills-purchase" aria-selected="false">Purchase Details</a>
 			  <a class="nav-link" id="v-pills-vendor-tab" data-toggle="pill" href="#v-pills-vendor" role="tab" aria-controls="v-pills-vendor" aria-selected="false">Register Suppliers</a>
 			  <a class="nav-link" id="v-pills-sale-tab" data-toggle="pill" href="#v-pills-sale" role="tab" aria-controls="v-pills-sale" aria-selected="false">Sales</a>
-			  <!--<a class="nav-link" id="v-pills-customer-tab" data-toggle="pill" href="#v-pills-customer" role="tab" aria-controls="v-pills-customer" aria-selected="false">Dashboard</a>-->
+			  <a class="nav-link" id="v-pills-dashboard-tab" data-toggle="pill" href="#v-pills-dashboard" role="tab" aria-controls="v-pills-dashboard" aria-selected="false">Dashboard</a>
 			  <!--<a class="nav-link" id="v-pills-kiosk-tab" href="model/kiosk/kiosk.php" role="tab">Kiosks Management</a>-->
-			  <a class="nav-link" id="v-pills-dashboard-tab" href="view/dashboard/index.html" role="tab" aria-controls="v-pills-dashboard" aria-selected="false">Dashboard</a>
+			  <!--<a class="nav-link" id="v-pills-dashboard-tab" href="view/dashboard/index.php" role="tab" aria-controls="v-pills-dashboard" aria-selected="false">Dashboard</a>-->
 			</div>
 		</div>
 		 <div class="col-lg-10">
@@ -339,90 +338,7 @@
 				</div>
 			  </div>
 
-			  <!--Start of Dashboard-->
-			  <div class="tab-pane fade" id="v-pills-customer" role="tabpanel" aria-labelledby="v-pills-customer-tab">
-				<div class="card card-outline-secondary my-4">
-				  <div class="card-header"><h1>Dashboard</h1></div>
-				  <div class="card-body">
-    
-  </head>
-  <body>
-    <div class="grid-container">
-
-      <!-- Header -->
-      <header class="header">
-        
-      </header>
-      <!-- End Header -->
-      <!-- Main -->
-      <main class="main-container">
-        <div class="main-title">
-        </div>
-
-        <div class="main-cards">
-
-          <div class="card">
-            <div class="card-inner">
-              <h3>PRODUCT TYPES IN STORE</h3>
-              <span class="material-icons-outlined">inventory_2</span>
-            </div>
-			<h1 id="itemCountContainer">
-  			</h1>
-          </div>
-          <div class="card">
-            <div class="card-inner">
-              <h3>CURRENT SUPPLY COUNT</h3>
-              <span class="material-icons-outlined">category</span>
-            </div>
-            <h1 id="itemSupplyCountContainer">
-			</h1>
-          </div>
-
-		  <div class="card">
-			<div class="card-inner">
-				<h3>ACTIVE VENDORS</h3>
-				<span class="material-icons-outlined">person</span>
-			</div>
-			<h1 id="activeVendorCountContainer">
-			</h1>
-		  </div>
-		  <div class="card">
-			<div class="card-inner">
-				<h3>TOTAL PRODUCTS SOLD</h3>
-				<span class="material-icons-outlined">shopping_bag</span>
-			</div>
-			<h1 id="soldTotalProductsContainer">
-			</h1>
-		  </div>
-		  <div class="card">
-			<div class="card-inner">
-				<h3>TOTAL PRODUCTS SOLD (WEEKLY)</h3>
-				<span class="material-icons-outlined">shopping_bag</span>
-			</div>
-			<h1 id="soldWeeklyProductsContainer">
-			</h1>
-		  </div>
-          <div class="card">
-            <div class="card-inner">
-              <h3>ONGOING ORDERS</h3>
-              <span class="material-icons-outlined">groups</span>
-            </div>
-            <h1>1500</h1>
-          </div>
-        </div>
-      </main>
-      <!-- End Main -->
-
-    				</div>  
-  				</body>
-				  </div> 
-				</div>
-			  </div>
-			  <!--End of Dashboard-->
-
-
-
-			  
+			  <?php require('view/dashboard/dashboard.php');?>
 			  <div class="tab-pane fade" id="v-pills-search" role="tabpanel" aria-labelledby="v-pills-search-tab">
 				<div class="card card-outline-secondary my-4">
 				  <div class="card-header">Search Inventory<button id="searchTablesRefresh" name="searchTablesRefresh" class="btn btn-warning float-right btn-sm">Refresh</button></div>
