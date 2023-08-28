@@ -1,3 +1,5 @@
+const  {getMonthName} = require('./utils/utilities');
+
 var salesOrdersChartName = 'Sales Orders';
 var purchaseOrdersChartName = 'Purchase Orders';
 var monthsXAxis = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"];
@@ -15,6 +17,10 @@ var areaChartOptionsPurchaseNSales = {
     series: [
         {
             name: salesOrdersChartName,
+            data: []
+        },
+        {
+            name: purchaseOrdersChartName,
             data: []
         }
     ],
@@ -35,12 +41,6 @@ var areaChartOptionsPurchaseNSales = {
     }
 }
 
-/*var areaChartPurchaseNSales = new ApexCharts(
-    document.querySelector('#area-chart'),
-    areaChartOptionsPurchaseNSales
-);*/
-
-
 $(document).ready(function() {
     function updateAreaChart() {
         $.ajax({
@@ -52,8 +52,10 @@ $(document).ready(function() {
                     console.log(jsonResponse);
     
                     const itemsSoldData = jsonResponse.perMonthSoldCount.map(item => item.itemsSold);
+                    const monthNames = getMonthName(jsonResponse.perMonthSoldCount.map(item => item.month));
     
                     areaChartPurchaseNSales.updateSeries([{name: salesOrdersChartName, data: itemsSoldData}], true);
+                    areaChartOptionsPurchaseNSales.xaxis.categories =  monthNames;
     
                 } catch (error) {
                     console.log(`Error fetching JSON data: ${error}`);
