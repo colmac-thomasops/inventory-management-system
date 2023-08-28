@@ -17,7 +17,8 @@ COPY ../../inc ./inc/
 COPY ../../model ./model/
 COPY ../../vendor ./vendor/
 COPY ../../.env .
+COPY ../../view ./view/
 COPY ./images/webapp/conf/docker-php.conf /etc/apache2/conf-available
 
-RUN apt update && docker-php-ext-install pdo pdo_mysql && a2enmod rewrite
+RUN apt update && docker-php-ext-install pdo pdo_mysql && a2enmod rewrite headers
 EXPOSE 80
