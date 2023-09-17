@@ -96,5 +96,34 @@
                 return [];
             }
         }
+
+        public function getCurrentYearPurchasesCount(int $year) {
+            $query = <<<QUERY
+            SELECT
+            MONTH(purchaseDate) AS month,
+            SUM(quantity) AS itemsPurchased
+            FROM
+                purchase
+            WHERE
+                YEAR(purchaseDate) = :year
+            GROUP BY
+                YEAR(purchaseDate)
+                MONTH(purchaseDate)
+            ORDER BY
+                YEAR(purchaseDate)
+                MONTH(purchaseDate);
+            QUERY;
+
+            $sqlStatement = $this->conn->prepare($query);
+            $sqlStatement->bindParam(':year', $year, PDO::PARAM_INT);
+            $sqlStatement->execute();
+
+            $result = $sqlStatement->fetchAll(PDO::FETCH_ASSOC);
+            if (is_array($result)) {
+                return $result;
+            } else {
+                return [];
+            }
+        }
     }
 ?>

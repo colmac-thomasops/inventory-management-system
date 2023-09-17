@@ -110,5 +110,27 @@
             }
             return json_encode($response, JSON_PRETTY_PRINT);
         }
+
+        public function getCurrentYearPurchasesCount(int $year = null) {
+            try {
+                if (is_null($year)) {
+                    $year = date("Y");
+                }
+                $itemCountModel = new ItemCountModel();
+                $currYearPurchasesCount = $itemCountModel->getCurrentYearPurchasesCount($year);
+                $response["success"] = true;
+                $response["year"] = $year;
+                $response["monthlyPurchaseCount"] = $currYearPurchasesCount;
+                $this->logger->info("Process successful.".PHP_EOL."Response: ".PHP_EOL.json_encode($response));
+            } catch (Exception $e) {
+                $errorCode = $e->getCode();
+                $errorMessage = $e->getMessage();
+                $stackTrace = $e->getTraceAsString();
+                $this->logger->error("ERROR (Code: $errorCode): $errorMessage".PHP_EOL."$stackTrace");
+                $response["success"] = false;
+                $response["error"] = "An error occurred. Please check the logs for more information.";
+            }
+            return json_encode($response, JSON_PRETTY_PRINT);
+        }
     }
 ?>
