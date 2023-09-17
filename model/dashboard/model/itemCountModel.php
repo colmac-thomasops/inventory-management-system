@@ -73,6 +73,7 @@
             $query = <<<QUERY
             SELECT
             MONTH(saleDate) AS month,
+            DATE_FORMAT(saleDate, '%b') as monthName,
             SUM(quantity) AS itemsSold
             FROM
                 sale
@@ -80,10 +81,10 @@
                 YEAR(saleDate) = :year
             GROUP BY
                 YEAR(saleDate),
-                MONTH(saleDate)
+                month, monthName
             ORDER BY
                 YEAR(saleDate),
-                MONTH(saleDate);
+                month, monthName;
             QUERY;
             $sqlStatement = $this->conn->prepare($query);
             $sqlStatement->bindParam(':year', $year, PDO::PARAM_INT);
