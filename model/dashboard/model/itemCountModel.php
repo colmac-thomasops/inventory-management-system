@@ -102,17 +102,18 @@
             $query = <<<QUERY
             SELECT
             MONTH(purchaseDate) AS month,
+            DATE_FORMAT(purchaseDate, '%b') as monthName,
             SUM(quantity) AS itemsPurchased
             FROM
                 purchase
             WHERE
                 YEAR(purchaseDate) = :year
             GROUP BY
-                YEAR(purchaseDate)
+                YEAR(purchaseDate),
                 MONTH(purchaseDate)
             ORDER BY
-                YEAR(purchaseDate)
-                MONTH(purchaseDate);
+                YEAR(purchaseDate),
+                month, monthName;
             QUERY;
 
             $sqlStatement = $this->conn->prepare($query);
