@@ -121,56 +121,7 @@
                 $response["success"] = true;
                 $response["year"] = $year;
                 $response["monthlyPurchaseCount"] = $currYearPurchasesCount;
-                $this->logger->info("Process successful.".PHP_EOL."Respons$(document).ready(function() {
-    function updateAreaChart() {
-        const date = new Date();
-        $.when(
-            $.ajax({
-                url: 'model/dashboard/getItemSoldCountperMonth.php',
-                method: 'GET'
-            }),
-            $.ajax({
-                url: 'model/dashboard/getPurchasesAnalytics.php',
-                method: 'GET',
-                data: {
-                    year: date.getFullYear()
-                }
-            })
-        ).done((salesResponse, purchasesResponse) => {
-            try {
-                const jsonSalesResponse = JSON.parse(salesResponse);
-                const jsonPurchasesResponse = JSON.parse(purchasesResponse);
-
-                console.log(`Sales Result: ${jsonSalesResponse}`);
-                console.log(`Purchases Result: ${jsonPurchasesResponse}`);
-
-                const month = jsonSalesResponse.perMonthSoldCount.map(item => item.monthName);
-                const salesData = jsonSalesResponse.perMonthSoldCount.map(item => item.itemsSold);
-                const purchasesData = jsonPurchasesResponse.monthlyPurchaseCount.map(item => item.monthName);
-
-                areaChartPurchaseNSales.updateSeries([{name: salesOrdersChartName, data: itemsSoldData}], true);
-                areaChartPurchaseNSales.updateSeries([{name: purchaseOrdersChartName, data: purchasesData}], true);
-
-                areaChartPurchaseNSales.updateOptions({
-                    xaxis: {
-                        categories: month
-                    }
-                });
-
-            } catch (error) {
-                console.log(`Error fetching JSON data: ${error}`);
-            }
-        });
-    }
-
-    var areaChartPurchaseNSales = new ApexCharts(
-        document.querySelector('#area-chart'),
-        areaChartOptionsPurchaseNSales
-    );
-
-    updateAreaChart();
-    areaChartPurchaseNSales.render();
-});e: ".PHP_EOL.json_encode($response));
+                $this->logger->info("Process successful.".PHP_EOL."Response: ".PHP_EOL.json_encode($response));
             } catch (Exception $e) {
                 $errorCode = $e->getCode();
                 $errorMessage = $e->getMessage();
